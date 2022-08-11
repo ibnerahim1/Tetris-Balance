@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 6f78192cec1344d83a177ac5e6139ab3, type: 3}
   m_Name: Settings
-  m_EditorClassIdentifier: GameAnalyticsSDK:GameAnalyticsSDK.Setup:Settings
+  m_EditorClassIdentifier: 
   TotalMessagesSubmitted: 0
   TotalMessagesFailed: 0
   DesignMessagesSubmitted: 0
@@ -25,33 +25,25 @@ MonoBehaviour:
   UserMessagesSubmitted: 0
   UserMessagesFailed: 0
   CustomArea: 
-  gameKey:
-  - 39d3c1061e69dea42df790eebf34c786
-  secretKey:
-  - 712959a5bcb190e0311d170776f32bfe9be8084c
-  Build:
-  - 0.1
-  SelectedPlatformOrganization:
-  - 
-  SelectedPlatformStudio:
-  - 
-  SelectedPlatformGame:
-  - 
-  SelectedPlatformGameID: ffffffff
-  SelectedOrganization: 00000000
-  SelectedStudio: 00000000
-  SelectedGame: 00000000
-  NewVersion: 7.3.24
-  Changes: '7.3.24
-
-    - fixed fps script for when pausing game'
+  gameKey: []
+  secretKey: []
+  Build: []
+  SelectedPlatformOrganization: []
+  SelectedPlatformStudio: []
+  SelectedPlatformGame: []
+  SelectedPlatformGameID: 
+  SelectedOrganization: 
+  SelectedStudio: 
+  SelectedGame: 
+  NewVersion: 
+  Changes: 
   SignUpOpen: 1
   StudioName: 
   GameName: 
   OrganizationName: 
   OrganizationIdentifier: 
   EmailGA: 
-  IntroScreen: 0
+  IntroScreen: 1
   InfoLogEditor: 1
   InfoLogBuild: 1
   VerboseLogBuild: 0
@@ -64,8 +56,8 @@ MonoBehaviour:
   ResourceItemTypes: []
   ResourceCurrencies: []
   LastCreatedGamePlatform: 0
-  Platforms: 0b000000
-  CurrentInspectorState: 1
+  Platforms: 
+  CurrentInspectorState: 0
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
@@ -92,7 +84,7 @@ MonoBehaviour:
   IncludeGooglePlay: 1
   FpsCriticalThreshold: 20
   FpsCirticalSubmitInterval: 1
-  PlatformFoldOut: 01
+  PlatformFoldOut: 
   CustomDimensions01FoldOut: 0
   CustomDimensions02FoldOut: 0
   CustomDimensions03FoldOut: 0
