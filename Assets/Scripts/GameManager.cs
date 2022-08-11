@@ -7,6 +7,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using TMPro;
 using MoreMountains.NiceVibrations;
+using GameAnalyticsSDK;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     public Image hand;
-    public GameObject menuPanel, gamePanel, winPanel, failPanel;
+    public GameObject menuPanel, gamePanel, winPanel, failPanel, tut1, tut2;
     public TextMeshProUGUI blockText, levelText;
     public enum hapticTypes{ soft, success, medium, fail};
     public hapticTypes haptics;
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
     private bool once;
     private Transform currLevel;
     private Vector3 prevPos, mousePos, mousePos1, offset;
-    private float time;
+    private float time, tutTime;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
         levelText.text = "LEVEL " + level;
         levelText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "LEVEL " + level;
         cam.backgroundColor = Color.HSVToRGB(Random.Range(0f, 1f), 0.1f, 1);
+        GameAnalytics.Initialize();
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "level ", level);
     }
 
     // Update is called once per frame
@@ -95,6 +98,12 @@ public class GameManager : MonoBehaviour
             gameStarted = true;
             menuPanel.SetActive(false);
             SpawnBlock();
+            tutTime = Time.timeSinceLevelLoad;
+        }
+        if (level < 3 && gameStarted)
+        {
+            tut1.SetActive(Time.timeSinceLevelLoad < tutTime + 3);
+            tut2.SetActive(Time.timeSinceLevelLoad < tutTime + 5 && Time.timeSinceLevelLoad > tutTime + 3.5f);
         }
     }
 
@@ -103,6 +112,7 @@ public class GameManager : MonoBehaviour
         if (gameStarted)
         {
             gameStarted = false;
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "level ", level);
             level++;
             PlayerPrefs.SetInt("level", level);
             HapticManager(hapticTypes.success);
@@ -116,6 +126,7 @@ public class GameManager : MonoBehaviour
         if (gameStarted)
         {
             HapticManager(hapticTypes.fail);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "level ", level);
 
             gameStarted = false;
             failPanel.SetActive(true);
