@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
         levelText.text = "LEVEL " + level;
         levelText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "LEVEL " + level;
-        cam.backgroundColor = Color.HSVToRGB(Random.Range(0f, 1f), 0.1f, 1);
+        cam.backgroundColor = Color.HSVToRGB(Random.Range(0f, 1f), 0.05f, 1);
         GameAnalytics.Initialize();
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "level ", level);
     }
